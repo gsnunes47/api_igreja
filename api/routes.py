@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from sistema_igreja import app, database
-from sistema_igreja.models import Membro
+from api import app, database
+from api.models import Membro
 import datetime
 import json
 

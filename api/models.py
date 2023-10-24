@@ -1,4 +1,4 @@
-from sistema_igreja import database
+from api import database
 
 class Membro(database.Model):
     id = database.Column(database.Integer, primary_key=True)
