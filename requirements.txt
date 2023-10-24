@@ -1,5 +1,4 @@
 Flask
-json
 datetime
 pprint
 flask_sqlalchemy
