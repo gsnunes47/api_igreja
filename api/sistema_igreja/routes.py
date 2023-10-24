@@ -3,7 +3,6 @@ from sistema_igreja import app, database
 from sistema_igreja.models import Membro
 import datetime
 import json
-from pprint import pprint
 
 @app.route('/membros', methods=["POST"])
 def novo_membro():

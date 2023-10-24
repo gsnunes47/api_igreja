@@ -1,5 +1,4 @@
 Flask
 datetime
-pprint
 flask_sqlalchemy
 gunicorn
