@@ -2,3 +2,4 @@ Flask
 datetime
 flask_sqlalchemy
 gunicorn
+psycopg2
