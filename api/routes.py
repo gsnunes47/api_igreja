@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
-from api import app, database
-from api.models import Membro
+from api import app, database, bcrypt
+from api.models import Membro, Usuario
+# from api.authentication import jwt_required
 import datetime
 import json
 
@@ -62,3 +63,34 @@ def editar_membro():
         treat = l.pop('_sa_instance_state')
         lista_membros.append(l)
     return jsonify(lista_membros)
+
+@app.route('/usuarios', methods=["GET"])
+def mostrar_usuarios():
+    lista_usuarios = []
+    usuarios = Usuario.query.all()
+    for l in usuarios:
+        l = l.__dict__
+        treat = l.pop('_sa_instance_state')
+        lista_usuarios.append(l)
+    return jsonify(lista_usuarios)
+
+@app.route('/login', methods=["POST"])
+def auth():
+    usuario_json = request.get_json()
+    usuario_obj = Usuario.query.filter_by(email=usuario_json['email']).first()
+
+    if not usuario_obj:
+        return jsonify({"error": "usuario não encontrado."})
+
+    verify = usuario_obj.verify_password(usuario_json['senha'])
+
+    if not verify:
+        return jsonify({"error": "senha incorreta."})
+
+    return jsonify({"auth": True})
+
+# @app.route('/protected')
+# @jwt_required()
+# def protected():
+#     current_user = get_jwt_identity()
+#     return jsonify({"usuario_atual": current_user}), 200

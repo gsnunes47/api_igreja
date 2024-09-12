@@ -1,4 +1,4 @@
-Flask
+Flask==2.3.2
 datetime
 flask_sqlalchemy
 gunicorn

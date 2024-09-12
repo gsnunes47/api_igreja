@@ -1,5 +1,5 @@
-import requests
+import pandas
 
-membros = requests.post(url='https://api-igreja.onrender.com/membros', json='')
-membros = requests.get(url='https://api-igreja.onrender.com/membros')
-print(membros)
+df = pandas.read_excel(r"C:\Users\gusta\Downloads\Lista de Usuario do Painel de senha.xls")
+
+print(df)   
